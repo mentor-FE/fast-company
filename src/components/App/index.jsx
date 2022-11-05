@@ -1,7 +1,10 @@
+import styles from './app.module.scss'
+import User from './../User/index';
+
 function App() {
   return (
-    <div className="App">
-     App
+    <div className={styles.parant}>
+     <User />
     </div>
   );
 }
