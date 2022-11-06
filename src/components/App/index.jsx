@@ -1,10 +1,22 @@
-import styles from './app.module.scss'
-import User from './../User/index';
+import { useState } from "react";
+
+import API from "../../API";
+import Users from "./../Users/index";
+import styles from "./app.module.scss";
 
 function App() {
+  const [users, setUsers] = useState(API.users.fetchAll());
+  const handleSetFavorite = (id) => {
+    setUsers(
+      [...users].map((el) =>
+        el._id === id ? { ...el, bookmark: !el.bookmark } : el
+      )
+    );
+  };
+
   return (
     <div className={styles.parant}>
-     <User />
+      <Users users={users} setFavorite={handleSetFavorite} />
     </div>
   );
 }
