@@ -1,4 +1,4 @@
-const Rating = ({ rating }) => {
+const Rating = ({ rating='' }) => {
   const setRateColor = (rate) => {
     if (rate < 0) return
     
