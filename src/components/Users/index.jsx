@@ -1,17 +1,8 @@
 // import { useState } from "react";
 import Bookmark from "../Bookmark";
+import Rating from "../Rating";
 
 const Users = ({ users, ...props }) => {
-  // console.log(users);
-
-  // const [checkedFavorite, setCheckedFavorite] = useState(false)
-
-  // const handleSetFavorite = (id) => {
-  //   const findUser = users.filter(item => item._id === id)
-  //   const changeUserStatus = [{ ...findUser, bookmark: !findUser.bookmark }]
-  //   console.log(changeUserStatus);
-
-  // }
 
   function setBgcolorToRole(key) {
     switch (key) {
@@ -32,15 +23,6 @@ const Users = ({ users, ...props }) => {
         break;
     }
   }
-
-  /*
-   * "success" - "Троль"
-   * "dark" "Неуверенный"
-   * "primary" "Нудила"
-   * "secondary" "Странный"
-   * "info" "Красавчик"
-   * "danger""Алкоголик"
-   */
 
   return (
     <>
@@ -99,7 +81,7 @@ const Users = ({ users, ...props }) => {
                     {item.completedMeetings}
                   </td>
                   <td className="p-3 text-gray-700 text-base whitespace-nowrap">
-                    {item.rate}
+                    <Rating rating={item.rate} />
                   </td>
                   <td className="p-3 text-gray-700 text-base whitespace-nowrap">
                     <Bookmark
@@ -108,7 +90,7 @@ const Users = ({ users, ...props }) => {
                     />
                   </td>
                   <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                    <button className="py-2 px-4 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
+                    <button disabled={item.bookmark} onClick={() => props.onDelete(item._id)} className={`py-2 px-4 bg-red-500 text-white font-semibold rounded-lg shadow-md ${item.bookmark ? 'bg-slate-700' : 'hover:bg-red-700'}  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75`}>
                       Удалить
                     </button>
                   </td>
