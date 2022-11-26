@@ -1,24 +1,25 @@
 const Pagination = (props) => {
   const active =
-    "z-10 py-2 px-3 leading-tight text-blue-600 bg-blue-50 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white";
+    "z-10 py-2 px-3 leading-tight text-blue-600 bg-blue-50 border border-blue-300 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
   const notActive =
-    "py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white";
+    "py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
 
-  const arr = [];
-  const countPage = Math.ceil((props.itemCount + 1) / props.pageSize);
-  if (countPage === 1) return null;
+  const arr = []
+  const countPage = Math.ceil((props.itemCount + 1) / props.pageSize)
+  if (countPage === 1) return null
   for (let i = 1; i < countPage; i++) {
-    arr[i] = i; // Creating an array of size 4 and filled of 1
+    arr[i] = i // Creating an array of size 4 and filled of 1
   }
-console.log(props.currentPage, countPage - 2);
+  console.log(props.currentPage, countPage - 2)
   const prev = (
     <li>
       <button
         href="/"
         className="block py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         onClick={
-          props.currentPage > 1 ?
-          (e) => props.onPageChange(e, props.currentPage - 1) : null
+          props.currentPage > 1
+            ? (e) => props.onPageChange(e, props.currentPage - 1)
+            : null
         }
       >
         <span className="sr-only">Previous</span>
@@ -37,7 +38,7 @@ console.log(props.currentPage, countPage - 2);
         </svg>
       </button>
     </li>
-  );
+  )
   const pages = arr.map((item) => (
     <li key={item}>
       <button
@@ -48,7 +49,7 @@ console.log(props.currentPage, countPage - 2);
         {item}
       </button>
     </li>
-  ));
+  ))
 
   const next = (
     <li>
@@ -56,8 +57,9 @@ console.log(props.currentPage, countPage - 2);
         href="/"
         className="block py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         onClick={
-          props.currentPage < countPage - 1 ?
-          (e) => props.onPageChange(e, props.currentPage + 1) : null
+          props.currentPage < countPage - 1
+            ? (e) => props.onPageChange(e, props.currentPage + 1)
+            : null
         }
       >
         <span className="sr-only">Next</span>
@@ -76,7 +78,7 @@ console.log(props.currentPage, countPage - 2);
         </svg>
       </button>
     </li>
-  );
+  )
 
   return (
     <nav aria-label="Page navigation example">
@@ -84,7 +86,7 @@ console.log(props.currentPage, countPage - 2);
         {prev} {pages} {next}
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination

@@ -1,13 +1,10 @@
-import Bookmark from "../Bookmark";
-import Qualitie from "../Qualitie";
-import Rating from "../Rating";
+import Bookmark from "../Bookmark"
+import Qualitie from "../Qualitie"
+import Rating from "../Rating"
 
 const UserCard = ({ user, ...props }) => {
   return (
-    <div
-      key={user._id}
-      className="bg-sky-200 p-4 space-y-2 rounded-lg shadow"
-    >
+    <div key={user._id} className="bg-sky-200 p-4 space-y-2 rounded-lg shadow">
       <div className="flex items-center text-sm">
         <div className="flex flex-wrap">
           <div className="flex content-start">Name</div>
@@ -56,7 +53,7 @@ const UserCard = ({ user, ...props }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserCard;
+export default UserCard

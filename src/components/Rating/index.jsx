@@ -1,16 +1,16 @@
-const Rating = ({ rating='' }) => {
+const Rating = ({ rating = "" }) => {
   const setRateColor = (rate) => {
     if (rate < 0) return
-    
+
     if (rate > 0 && rate < 3) {
-      return "text-red-400";
+      return "text-red-400"
     } else if (rate >= 3 && rate < 4) {
-      return "text-yellow-400";
+      return "text-yellow-400"
     } else if (rate >= 4 && rate < 5) {
-      return "text-cyan-400";
+      return "text-cyan-400"
     }
-    return "text-green-400";
-  };
+    return "text-green-400"
+  }
 
   return (
     <div className="flex items-center">
@@ -28,7 +28,7 @@ const Rating = ({ rating='' }) => {
         {rating}
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Rating;
+export default Rating

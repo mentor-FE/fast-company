@@ -1,6 +1,6 @@
-import Bookmark from "../Bookmark";
-import Qualitie from "../Qualitie";
-import Rating from "../Rating";
+import Bookmark from "../Bookmark"
+import Qualitie from "../Qualitie"
+import Rating from "../Rating"
 
 const User = ({ user, index, ...props }) => {
   return (
@@ -40,7 +40,7 @@ const User = ({ user, index, ...props }) => {
         </td>
       </tr>
     </>
-  );
-};
+  )
+}
 
-export default User;
+export default User

@@ -2,19 +2,19 @@ const Qualitie = ({ qualities = {} }) => {
   function setBgcolorToRole(key) {
     switch (key) {
       case "success":
-        return "bg-emerald-500";
+        return "bg-emerald-500"
       case "dark":
-        return "bg-slate-500";
+        return "bg-slate-500"
       case "primary":
-        return "bg-cyan-500";
+        return "bg-cyan-500"
       case "secondary":
-        return "bg-orange-500";
+        return "bg-orange-500"
       case "info":
-        return "bg-indigo-500";
+        return "bg-indigo-500"
       case "danger":
-        return "bg-red-500";
+        return "bg-red-500"
       default:
-        break;
+        break
     }
   }
   return (
@@ -30,7 +30,7 @@ const Qualitie = ({ qualities = {} }) => {
         </span>
       ))}
     </>
-  );
-};
+  )
+}
 
-export default Qualitie;
+export default Qualitie

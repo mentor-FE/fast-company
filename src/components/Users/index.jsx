@@ -1,9 +1,9 @@
-import { useState } from "react";
-import Pagination from "../Pagination";
-import SearchStatus from "../SearchStatus";
-import User from "../User";
-import UserCard from "../UserCard/Index";
-import { paginate } from './../../Utils/paginate';
+import { useState } from "react"
+import Pagination from "../Pagination"
+import SearchStatus from "../SearchStatus"
+import User from "../User"
+import UserCard from "../UserCard/Index"
+import { paginate } from "./../../Utils/paginate"
 
 const Users = ({ users, ...props }) => {
   const count = users.length
@@ -14,7 +14,7 @@ const Users = ({ users, ...props }) => {
     e.preventDefault()
     setCurrentPage(pageIndex)
   }
-  
+
   const cropUser = paginate(users, currentPage, pageSize)
 
   return (
@@ -57,13 +57,20 @@ const Users = ({ users, ...props }) => {
           </div>
           <div className="grid grid-cols-1 gap-4 md:hidden">
             {count > 0 &&
-              cropUser.map((item) => <UserCard key={item._id} user={item} {...props}/>)}
+              cropUser.map((item) => (
+                <UserCard key={item._id} user={item} {...props} />
+              ))}
           </div>
-          <Pagination currentPage={currentPage} itemCount={count} pageSize={pageSize} onPageChange={handlePageChange} />
+          <Pagination
+            currentPage={currentPage}
+            itemCount={count}
+            pageSize={pageSize}
+            onPageChange={handlePageChange}
+          />
         </>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Users;
+export default Users
