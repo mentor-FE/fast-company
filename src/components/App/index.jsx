@@ -7,7 +7,7 @@ import styles from "./app.module.scss"
 function App() {
   const [users, setUsers] = useState(
     JSON.parse(localStorage.getItem("users")) || API.users.fetchAll()
-  )
+    )
   const handleSetFavorite = (id) => {
     const newUsers = [...users].map((el) => el._id === id ? { ...el, bookmark: !el.bookmark } : el)
     localStorage.setItem("users", JSON.stringify(newUsers))

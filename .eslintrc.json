@@ -19,6 +19,11 @@
     "comma-dangle": ["error", "never"],
     "no-confusing-arrow": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-no-bind": "off"
+    "react/jsx-no-bind": "off",
+    "react/prop-types": "off",
+    "import/no-useless-path-segments": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-named-as-default": "off",
+    "import/prefer-default-export": "off"
   }
 }
