@@ -12,12 +12,13 @@ function Users({ users = [], ...props }) {
   const count = users.length
   const pageSize = 4
   const [currentPage, setCurrentPage] = useState(1)
-  const [professions, setProfessions] = useState([])
+  const [professions, setProfessions] = useState({})
   // console.log(professions)
   useEffect(()=>{
     API.professions.fetchAll().then(data => setProfessions(data))
   },[])
   useEffect(()=> {
+    setCurrentPage(1)
     console.log(professions)
   }, [professions])
   const handlePageChange = (e, pageIndex) => {
@@ -27,6 +28,12 @@ function Users({ users = [], ...props }) {
 
   const cropUser = paginate(users, currentPage, pageSize)
 
+  // choose profession item
+  const handleProfessionSelect =(params) => {
+    console.log('селект', params);
+    
+  }
+
   return (
     <>
       <SearchStatus length={users.length} />
@@ -34,7 +41,7 @@ function Users({ users = [], ...props }) {
       && (
         <>
           <div className="flex">
-            <GroupList />
+            <GroupList professions={professions} onSelect={handleProfessionSelect} />
             <div className="grow-[3] overflow-auto rounded-lg shadow hidden md:block">
               <table className="w-full">
                 <thead className="bg-emerald-100">
