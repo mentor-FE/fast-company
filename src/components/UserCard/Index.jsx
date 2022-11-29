@@ -2,10 +2,10 @@ import Bookmark from "../Bookmark"
 import Qualitie from "../Qualitie"
 import Rating from "../Rating"
 
-const UserCard = ({ user, ...props }) => {
+function UserCard({ user, ...props }) {
   return (
     <div key={user._id} className="bg-sky-200 p-4 space-y-2 rounded-lg shadow">
-      <div className="flex items-center text-sm">
+      <div className="flex items-center text-sm flex-wrap">
         <div className="flex flex-wrap">
           <div className="flex content-start">Name</div>
           <div className="p-3 text-sm">{user.name}</div>
@@ -42,6 +42,7 @@ const UserCard = ({ user, ...props }) => {
         </div>
         <div className="flex flex-shrink-0">
           <button
+            type="button"
             disabled={user.bookmark}
             onClick={() => props.onDelete(user._id)}
             className={`py-2 px-4 bg-red-500 text-white font-semibold rounded-lg shadow-md ${
