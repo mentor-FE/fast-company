@@ -9,7 +9,7 @@ import API from "../../API"
 import { paginate } from "../../Utils/paginate"
 
 function Users({ users = [], ...props }) {
-  const pageSize = 4
+  const pageSize = 6
   const [currentPage, setCurrentPage] = useState(1)
   const [professions, setProfessions] = useState()
   const [selectedProf, setSelectedProf] = useState()
@@ -60,7 +60,7 @@ function Users({ users = [], ...props }) {
       <SearchStatus length={users.length} />
 
       <div>
-        <div className="flex">
+        <div className="flex self-start mt-12">
           {professions && (
             <GroupList
               professions={professions}

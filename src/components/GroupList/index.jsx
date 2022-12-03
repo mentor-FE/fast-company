@@ -40,7 +40,7 @@ function GroupList(props) {
   ))
   console.log('data', data)
   return (
-    <nav className="flex flex-col justify-center min-w-[15%] pr-2.5 truncate">
+    <nav className="flex flex-col justify-center self-start min-w-[15%] pr-2.5 truncate">
       <ul className="list-none">
         {data}
       </ul>
