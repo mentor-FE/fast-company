@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { useState, useEffect } from "react"
+import _ from "lodash"
 import GroupList from "../GroupList"
 import Pagination from "../Pagination"
 import SearchStatus from "../SearchStatus"
@@ -13,6 +14,7 @@ function Users({ users = [], ...props }) {
   const [currentPage, setCurrentPage] = useState(1)
   const [professions, setProfessions] = useState()
   const [selectedProf, setSelectedProf] = useState()
+  const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" })
   useEffect(() => {
     API.professions.fetchAll().then((data) =>
       setProfessions({
@@ -42,7 +44,8 @@ function Users({ users = [], ...props }) {
         })
       : users
   const count = filtredUsers.length
-  const cropUser = paginate(filtredUsers, currentPage, pageSize)
+  const sortedUsers = _.orderBy(filtredUsers, [sortBy.iter], [sortBy.order])
+  const cropUser = paginate(sortedUsers, currentPage, pageSize)
 
   // choose profession item
   const handleProfessionSelect = (params) => {
@@ -50,8 +53,14 @@ function Users({ users = [], ...props }) {
   }
   //sort
   const handleSort = (params) => {
-    console.log('params', params);
-    
+    if (sortBy.iter === params) {
+      setSortBy((prev) => ({
+        ...prev,
+        order: prev.order === "asc" ? "desc" : "asc"
+      }))
+    } else {
+      setSortBy({ iter: params, order: "asc" })
+    }
   }
   return (
     <>
