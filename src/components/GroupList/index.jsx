@@ -39,7 +39,6 @@ function GroupList(props) {
       {professions[item][contentProperty]} 
     </li>
   ))
-  console.log('data', data)
   return (
     <nav className="flex flex-col justify-center self-start min-w-[15%] pr-2.5 truncate">
       <ul className="list-none">
@@ -50,7 +49,3 @@ function GroupList(props) {
 }
 
 export default GroupList
-
-// {
-//   console.log(professions[item][contentProperty]);
-// }

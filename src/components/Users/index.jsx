@@ -50,7 +50,7 @@ function Users({ users = [], ...props }) {
   }
   //sort
   const handleSort = (params) => {
-    console.log(params);
+    console.log('params', params);
     
   }
   return (
