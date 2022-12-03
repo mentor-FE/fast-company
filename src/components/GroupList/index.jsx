@@ -15,7 +15,7 @@ function GroupList(props) {
       href="/dashboard"
       className={
         selectField === item
-          ? `${styles['item-list']} font-bold bg-rose-200  px-3 py-2 text-slate-700 rounded-lg hover:bg-indigo-200 ease-in-out duration-300`
+          ? `${styles['item-list']} font-bold bg-rose-200 px-3 py-2 text-slate-700 rounded-lg hover:bg-indigo-200 ease-in-out duration-300`
           : styles['item-list']
       }
       onClick={() => onSelect(item)}
