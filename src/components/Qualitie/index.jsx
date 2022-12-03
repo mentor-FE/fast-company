@@ -1,4 +1,5 @@
-const Qualitie = ({ qualities = {} }) => {
+/* eslint-disable consistent-return */
+function Qualitie({ qualities = {} }) {
   function setBgcolorToRole(key) {
     switch (key) {
       case "success":

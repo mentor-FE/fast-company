@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { v4 as uuidv4 } from 'uuid';
 import styles from "./index.module.css"
 function GroupList(props) {
   const {
@@ -11,7 +12,7 @@ function GroupList(props) {
   
   const data = Array.isArray(professions) ? professions.map((item) => (
     <li
-      key={item[keyProperty]}
+      key={uuidv4()}
       href="/dashboard"
       className={
         selectField === item
@@ -25,7 +26,7 @@ function GroupList(props) {
     </li>
   )) : professions && Object.keys(professions).map((item) => (
     <li
-      key={professions[item][keyProperty]}
+      key={uuidv4()}
       href="/dashboard"
       className={
         selectField === professions[item]
