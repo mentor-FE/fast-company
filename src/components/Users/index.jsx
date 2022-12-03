@@ -9,30 +9,52 @@ import API from "../../API"
 import { paginate } from "../../Utils/paginate"
 
 function Users({ users = [], ...props }) {
-  const count = users.length
   const pageSize = 4
   const [currentPage, setCurrentPage] = useState(1)
   const [professions, setProfessions] = useState()
-  // console.log(professions)
+  const [selectedProf, setSelectedProf] = useState()
+  // setProfessions(
+  //   Object.assign(data, {
+  //     allProfessions: {
+  //       name: "Все провессиии"
+  //     }
+  //   })
+  // )
   useEffect(() => {
-    API.professions.fetchAll().then((data) => setProfessions(data))
+    API.professions.fetchAll().then((data) =>
+      setProfessions({
+        ...data,
+        allProfessions: {
+          name: "Все профессии"
+        }
+      })
+    )
   }, [])
   useEffect(() => {
     setCurrentPage(1)
-    console.log(professions)
   }, [professions])
   const handlePageChange = (e, pageIndex) => {
     e.preventDefault()
     setCurrentPage(pageIndex)
   }
-
-  const cropUser = paginate(users, currentPage, pageSize)
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [selectedProf])
+  const filtredUsers =
+    selectedProf && selectedProf["_id"]
+      ? users.filter((user) => {
+          return (
+            JSON.stringify(user.profession) === JSON.stringify(selectedProf)
+          )
+        })
+      : users
+  const count = filtredUsers.length
+  const cropUser = paginate(filtredUsers, currentPage, pageSize)
 
   // choose profession item
   const handleProfessionSelect = (params) => {
-    console.log("селект", params)
+    setSelectedProf(params)
   }
-
   return (
     <>
       <SearchStatus length={users.length} />
@@ -43,6 +65,7 @@ function Users({ users = [], ...props }) {
             <GroupList
               professions={professions}
               onSelect={handleProfessionSelect}
+              selectField={selectedProf}
             />
           )}
 

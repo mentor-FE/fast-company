@@ -1,23 +1,55 @@
 /* eslint-disable */
+import styles from "./index.module.css"
 function GroupList(props) {
-  const { professions = {}, onSelect } = props
+  const {
+    professions,
+    onSelect,
+    keyProperty = "_id",
+    contentProperty = "name",
+    selectField
+  } = props
+  
+  const data = Array.isArray(professions) ? professions.map((item) => (
+    <li
+      key={item[keyProperty]}
+      href="/dashboard"
+      className={
+        selectField === item
+          ? `${styles['item-list']} font-bold bg-rose-200  px-3 py-2 text-slate-700 rounded-lg hover:bg-indigo-200 ease-in-out duration-300`
+          : styles['item-list']
+      }
+      onClick={() => onSelect(item)}
+      role="button"
+    >
+      {item[contentProperty]}
+    </li>
+  )) : professions && Object.keys(professions).map((item) => (
+    <li
+      key={professions[item][keyProperty]}
+      href="/dashboard"
+      className={
+        selectField === professions[item]
+          ? `${styles['item-list']} font-bold bg-rose-200  px-3 py-2 text-slate-700 rounded-lg hover:bg-indigo-200 ease-in-out duration-300`
+          : styles['item-list']
+      }
+      onClick={() => onSelect(professions[item])}
+      role="button"
+    >
+      {professions[item][contentProperty]} 
+    </li>
+  ))
+  console.log('data', data)
   return (
-    <nav className="flex flex-col justify-center grow-[1]">
+    <nav className="flex flex-col justify-center min-w-[15%] pr-2.5 truncate">
       <ul className="list-none">
-        {Object.keys(professions).map((item) => (
-          <li
-            key={professions[item]._id}
-            href="/dashboard"
-            className="self-start font-bold px-3 py-2 text-slate-700 rounded-lg hover:bg-indigo-300 ease-in-out duration-300 hover:text-slate-900"
-            onClick={() => onSelect(professions[item].name)}
-            role="button"
-          >
-            {professions[item].name}
-          </li>
-        ))}
+        {data}
       </ul>
     </nav>
   )
 }
 
 export default GroupList
+
+// {
+//   console.log(professions[item][contentProperty]);
+// }

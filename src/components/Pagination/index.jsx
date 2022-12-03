@@ -11,7 +11,6 @@ const Pagination = (props) => {
   for (let i = 1; i < countPage; i++) {
     arr[i] = i // Creating an array of size 4 and filled of 1
   }
-  console.log(props.currentPage, countPage - 2)
   const prev = (
     <li>
       <button

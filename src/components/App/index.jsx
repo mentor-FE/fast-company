@@ -1,13 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import API from "../../API"
 import Users from "../Users"
 import styles from "./app.module.scss"
 
 function App() {
-  const [users, setUsers] = useState(
-    JSON.parse(localStorage.getItem("users")) || API.users.fetchAll()
-    )
+  const [users, setUsers] = useState()
+  useEffect(() => {
+    API.users.fetchAll().then((data) => setUsers(data))
+  }, [])
   const handleSetFavorite = (id) => {
     const newUsers = [...users].map((el) => el._id === id ? { ...el, bookmark: !el.bookmark } : el)
     localStorage.setItem("users", JSON.stringify(newUsers))
