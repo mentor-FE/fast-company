@@ -14,7 +14,7 @@ function Users({ users = [], ...props }) {
   const [currentPage, setCurrentPage] = useState(1)
   const [professions, setProfessions] = useState()
   const [selectedProf, setSelectedProf] = useState()
-  const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" })
+  const [sortBy, setSortBy] = useState({ path: "name", order: "desc" })
   useEffect(() => {
     API.professions.fetchAll().then((data) =>
       setProfessions({
@@ -35,6 +35,14 @@ function Users({ users = [], ...props }) {
   useEffect(() => {
     setCurrentPage(1)
   }, [selectedProf])
+    // choose profession item
+    const handleProfessionSelect = (params) => {
+      setSelectedProf(params)
+    }
+    //sort
+    const handleSort = (params) => {
+      setSortBy(params)
+    }
   const filtredUsers =
     selectedProf && selectedProf["_id"]
       ? users.filter((user) => {
@@ -44,24 +52,11 @@ function Users({ users = [], ...props }) {
         })
       : users
   const count = filtredUsers.length
-  const sortedUsers = _.orderBy(filtredUsers, [sortBy.iter], [sortBy.order])
+  const sortedUsers = _.orderBy(filtredUsers, [sortBy.path], [sortBy.order])
   const cropUser = paginate(sortedUsers, currentPage, pageSize)
 
-  // choose profession item
-  const handleProfessionSelect = (params) => {
-    setSelectedProf(params)
-  }
-  //sort
-  const handleSort = (params) => {
-    if (sortBy.iter === params) {
-      setSortBy((prev) => ({
-        ...prev,
-        order: prev.order === "asc" ? "desc" : "asc"
-      }))
-    } else {
-      setSortBy({ iter: params, order: "asc" })
-    }
-  }
+
+
   return (
     <>
       <SearchStatus length={users.length} />
@@ -77,7 +72,7 @@ function Users({ users = [], ...props }) {
           {count > 0 && (
             <>
               <div className="grow-[3] overflow-auto rounded-lg shadow hidden md:block">
-                <UserTable users={cropUser} onSort={handleSort} {...props} />
+                <UserTable users={cropUser} onSort={handleSort} selectedSort={sortBy} {...props} />
               </div>
               <div className="flex flex-wrap gap-4 md:hidden">
                 {count > 0 &&
