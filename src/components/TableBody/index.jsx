@@ -1,6 +1,21 @@
+/* eslint-disable */
 import _ from "lodash"
 
 function TableBody({ data, columns }) {
+
+
+  const renderData = (item, colmn) => {
+    if (columns[colmn].component) {
+      const comp = columns[colmn].component
+      if (typeof comp === "function") {
+        return comp(item)
+      }
+      return comp
+    }
+   return _.get(item, columns[colmn].path)
+  }
+
+
   return (
     <tbody className="devide-y devide-gray-100">
       {data.map((item, index) => (
@@ -8,9 +23,9 @@ function TableBody({ data, columns }) {
           key={item._id}
           className={index % 2 ? "bg-indigo-50" : "bg-slate-50"}
         >
-          {Object.keys(columns).map((tableData) => (
+          {Object.keys(columns).map((column) => (
             <td className="p-3 text-gray-700 whitespace-nowrap text-base font-semibold">
-              {_.get(item, columns[tableData].path)}
+              {renderData(item, column)}
             </td>
           ))}
         </tr>

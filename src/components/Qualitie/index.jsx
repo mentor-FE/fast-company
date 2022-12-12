@@ -19,18 +19,18 @@ function Qualitie({ qualities = {} }) {
     }
   }
   return (
-    <>
+    <div className="flex">
       {Object.values(qualities).map((qual) => (
         <span
           className={`${setBgcolorToRole(
             qual.color
-          )} rounded-lg px-3 font-medium text-white`}
+          )} rounded-lg px-3 font-medium text-white p-1 mr-1`}
           key={qual._id}
         >
           {qual.name}
         </span>
       ))}
-    </>
+    </div>
   )
 }
 
