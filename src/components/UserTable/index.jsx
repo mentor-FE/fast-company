@@ -1,5 +1,7 @@
+/* eslint-disable */
 import Bookmark from "../Bookmark"
 import Qualitie from "../Qualitie"
+import Table from "../Table"
 import TableBody from "../TableBody"
 import TableHeader from "../TableHeader"
 // import User from "../User"
@@ -52,15 +54,10 @@ function UserTable({
     }
   }
   return (
-    <table className="w-full">
+    <Table {...{ onSort, selectedSort, columns, users }}>
       <TableHeader {...{ onSort, selectedSort, columns }} />
       <TableBody {...{ columns, data: users }} />
-      {/* <tbody className="devide-y devide-gray-100">
-        {users.map((user, index) => (
-          <User key={user._id} {...props} user={user} index={index} />
-        ))}
-      </tbody> */}
-    </table>
+    </Table>
   )
 }
 export default UserTable
