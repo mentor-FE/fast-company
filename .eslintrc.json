@@ -26,6 +26,8 @@
     "import/no-named-as-default": "off",
     "import/prefer-default-export": "off",
     "consistent-return": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "react/function-component-definition": "off",
+    "react/jsx-filename-extension": "off"
   }
 }

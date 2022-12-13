@@ -8,7 +8,8 @@ import UserCard from "../UserCard/Index"
 import API from "../../API"
 import { paginate } from "../../Utils/paginate"
 import UserTable from "../UserTable"
-import styles from './Users.module.css'
+import styles from "./Users.module.scss"
+import NavBar from "../NavBar"
 
 function Users() {
   const [users, setUsers] = useState()
@@ -78,6 +79,7 @@ function Users() {
 
     return (
       <div className={styles.parant}>
+        <NavBar />
         <SearchStatus length={users.length} />
         <div>
           <div className="flex self-start mt-12">
