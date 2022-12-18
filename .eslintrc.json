@@ -28,6 +28,7 @@
     "consistent-return": "off",
     "import/no-extraneous-dependencies": "off",
     "react/function-component-definition": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "arrow-body-style": "off"
   }
 }

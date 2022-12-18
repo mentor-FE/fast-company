@@ -5,18 +5,19 @@ import Login from "../Login"
 import Users from "../Users"
 import Posts from "./../Posts/index"
 import Post from "./../Post/index"
+import Layout from "../Layout"
 
 const App = () => {
   return (
     <Routes>
-      <Route element={<Users />} path="/" />
-      <Route element={<Login />} path="/login" />
-      <Route element={<Posts />} path="/posts">
-        <Route element={<Posts />} index />
-        <Route element={<Post />} path=":slug" />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Users />} />
+        <Route path="login" element={<Login />} />
+        <Route path="dashboard" element={<DashBoard />} />
+        <Route path="posts" element={<Posts />} />
+        <Route path="posts/:id" element={<Post />} />
+        <Route path="*" element={<h1>Page not exist</h1>} />{" "}
       </Route>
-
-      <Route element={<DashBoard />} path="/dashboard" />
     </Routes>
   )
 }

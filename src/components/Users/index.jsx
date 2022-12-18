@@ -9,7 +9,6 @@ import API from "../../API"
 import { paginate } from "../../Utils/paginate"
 import UserTable from "../UserTable"
 import styles from "./Users.module.scss"
-import NavBar from "../NavBar"
 
 function Users() {
   const [users, setUsers] = useState()
@@ -79,7 +78,6 @@ function Users() {
 
     return (
       <div className={styles.parant}>
-        <NavBar />
         <SearchStatus length={users.length} />
         <div>
           <div className="flex self-start mt-12">
@@ -124,7 +122,7 @@ function Users() {
       <div role="status" className="text-center">
         <svg
           aria-hidden="true"
-          class="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+          className="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +136,7 @@ function Users() {
             fill="currentFill"
           />
         </svg>
-        <span class="sr-only">Loading...</span>
+        <span className="sr-only">Loading...</span>
       </div>
     )
   }

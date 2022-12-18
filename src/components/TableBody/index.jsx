@@ -24,7 +24,7 @@ function TableBody({ data, columns }) {
           className={index % 2 ? "bg-indigo-50" : "bg-slate-50"}
         >
           {Object.keys(columns).map((column) => (
-            <td className="p-3 text-gray-700 whitespace-nowrap text-base font-semibold">
+            <td  key={column} className="p-3 text-gray-700 whitespace-nowrap text-base font-semibold">
               {renderData(item, column)}
             </td>
           ))}

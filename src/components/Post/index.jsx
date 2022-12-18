@@ -1,6 +1,19 @@
+import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+
 /* eslint-disable */
 const Post = () => {
-    return ( <h1>Post one article</h1> );
+  const { id } = useParams()
+  console.log(id)
+  const [post, setPosts] = useState(null)
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .then((res) => res.json())
+      .then((data) => setPosts(data))
+      .then((e) => console.log(e))
+  }, [])
+
+  return (<><h1>{post && post.title}</h1></>)
 }
- 
-export default Post;
+
+export default Post

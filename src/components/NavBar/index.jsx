@@ -1,31 +1,33 @@
 /* eslint-disable */
-import { Link } from "react-router-dom"
+import CustomLink from './../Custom/CustomLink';
 
-const NavBar = () => (
-  <nav>
-    <ul className="flex">
-      <li className="mr-6">
-        <Link className="text-blue-500 hover:text-blue-800" to="/">
-          Home
-        </Link>
-      </li>
-      <li className="mr-6">
-        <Link className="text-blue-500 hover:text-blue-800" to="/login">
-          Login
-        </Link>
-      </li>
-      <li className="mr-6">
-        <Link className="text-blue-500 hover:text-blue-800" to="/posts">
-          Posts
-        </Link>
-      </li>
-      <li className="mr-6">
-        <Link className="text-blue-500 hover:text-blue-800" to="/dashboard">
-          Dashboard
-        </Link>
-      </li>
-    </ul>
-  </nav>
-)
+const NavBar = () => {
 
+  return (
+    <nav>
+      <ul className="flex">
+        <li className="mr-6">
+          <CustomLink to="/">
+            Home
+          </CustomLink>
+        </li>
+        <li className="mr-6">
+          <CustomLink to="/login">
+            Login
+          </CustomLink>
+        </li>
+        <li className="mr-6">
+          <CustomLink to="/posts">
+            Posts
+          </CustomLink>
+        </li>
+        <li className="mr-6">
+          <CustomLink to="/dashboard">
+            Dashboard
+          </CustomLink>
+        </li>
+      </ul>
+    </nav>
+  )
+}
 export default NavBar
