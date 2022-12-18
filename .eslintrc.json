@@ -29,6 +29,10 @@
     "import/no-extraneous-dependencies": "off",
     "react/function-component-definition": "off",
     "react/jsx-filename-extension": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "padded-blocks": "off",
+    "no-trailing-spaces": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "implicit-arrow-linebreak": "off"
   }
 }

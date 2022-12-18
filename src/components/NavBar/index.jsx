@@ -12,18 +12,23 @@ const NavBar = () => {
           </CustomLink>
         </li>
         <li className="mr-6">
+          <CustomLink to="/users">
+            Users
+          </CustomLink>
+        </li>
+        <li className="mr-6">
           <CustomLink to="/login">
             Login
           </CustomLink>
         </li>
         <li className="mr-6">
-          <CustomLink to="/posts">
-            Posts
+          <CustomLink to="/registration">
+            Registration
           </CustomLink>
         </li>
         <li className="mr-6">
-          <CustomLink to="/dashboard">
-            Dashboard
+          <CustomLink to="/posts">
+            Posts
           </CustomLink>
         </li>
       </ul>
